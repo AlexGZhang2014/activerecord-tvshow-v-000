@@ -12,7 +12,7 @@ class Show < ActiveRecord::Base
   end
   
   def Show::least_popular_show
-    self.find_by("rating, self.lowest_rating")
+    self.find_by("SELECT * FROM shows WHERE (rating, self.lowest_rating) LIMIT 1")
   end
   
   def Show::ratings_sum
